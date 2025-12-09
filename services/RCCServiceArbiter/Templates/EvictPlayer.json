@@ -1,0 +1,7 @@
+{
+    "Mode": "EvictPlayer",
+    "MessageVersion": 1,
+    "Settings": {
+        "PlayerId": %PLAYER_ID%
+    }
+}

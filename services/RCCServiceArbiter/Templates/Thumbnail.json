@@ -1,0 +1,9 @@
+{
+    "Mode": "Thumbnail",
+    "Settings": {
+        "Type": "%THUMBNAIL_TYPE%",
+        "Arguments": [
+            %ARGUMENTS%
+        ]
+    }
+}

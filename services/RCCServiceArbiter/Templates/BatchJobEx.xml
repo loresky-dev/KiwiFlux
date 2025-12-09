@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <BatchJobEx
+            xmlns="http://roblox.com/">
+            <job>
+                <id>%jobid%</id>
+                <category>1</category>
+                <cores>2</cores>
+                <expirationInSeconds>%expiration%</expirationInSeconds>
+            </job>
+            <script>
+                <name>%jobid%</name>
+                <script>
+                    <![CDATA[
+%script%
+                ]]>
+                </script>
+            </script>
+        </BatchJobEx>
+    </soap:Body>
+</soap:Envelope>

@@ -1,0 +1,23 @@
+{
+    "Mode": "GameServer",
+    "Settings": {
+        "PlaceId": %PLACE_ID%,
+        "CreatorId": %CREATOR_ID%,
+        "GameId": "%JOB_ID%",
+        "MachineAddress": "%MACHINE_ADDRESS%",
+        "MaxPlayers": %MAX_PLAYERS%,
+        "GsmInterval": 5,
+        "MaxGameInstances": 5,
+        "PreferredPlayerCapacity": %MAX_PLAYERS%,
+        "UniverseId": %UNIVERSE_ID%,
+        "BaseUrl": "%BASE_URL%",
+        "PlaceFetchUrl": "%PLACE_FETCH_URL%",
+        "MatchmakingContextId": %MATCHMAKING_CONTEXT_ID%,
+        "CreatorType": "%CREATOR_TYPE%",
+        "PlaceVersion": %PLACE_VERSION%,
+        "JobId": "%JOB_ID%",
+        "PreferredPort": %PORT%,
+        "ApiKey": "%API_KEY%",
+        "PlaceVisitAccessKey": "%PLACE_VISIT_ACCESS_KEY%"
+    }
+}

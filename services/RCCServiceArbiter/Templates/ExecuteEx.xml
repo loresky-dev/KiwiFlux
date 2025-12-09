@@ -1,0 +1,13 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:rob="http://roblox.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <rob:ExecuteEx>
+         <rob:jobID>%jobid%</rob:jobID>
+         <rob:script>
+            <rob:script><![CDATA[
+%script%
+            ]]></rob:script>
+         </rob:script>
+      </rob:ExecuteEx>
+   </soapenv:Body>
+</soapenv:Envelope>
