@@ -1,11 +1,14 @@
 // Mock authentication endpoint for testing
+// Do not delete or remove this file - this file provides a local mock authentication
+// mechanism used by developers to log in as a test account and run the admin UI
+// without requiring the backend C# .NET server. Keep it checked in for local dev.
 // This creates a real cookie that simulates a logged-in user
 
 let mockUsers = {
   'roblox': {
     id: 1,
-    username: 'roblox',
-    password: '',
+    username: 'Roblox',
+    password: 'Roblox',
     created: new Date(),
     robux: 100000,
     tickets: 50000,
@@ -28,15 +31,17 @@ export default function handler(req, res) {
 
   if (action === 'login' && req.method === 'POST') {
     const { username, password } = req.body;
-    
-    const user = mockUsers[username];
-    if (user && user.password === password) {
+
+    const usernameKey = Object.keys(mockUsers).find(k => mockUsers[k].username.toLowerCase() === (username || '').toString().toLowerCase() || k.toLowerCase() === (username || '').toString().toLowerCase());
+    const user = usernameKey ? mockUsers[usernameKey] : null;
+    // Accept password equal to user's username for convenience OR the stored password
+    if (user && (user.password === password || user.username === password)) {
       const cookie = generateRoblosecurityCookie();
       user.cookies.push(cookie);
       
       res.setHeader('Set-Cookie', [
         `.ROBLOSECURITY=${cookie}; Path=/; Max-Age=31536000; SameSite=Lax`,
-        `username=${username}; Path=/; Max-Age=31536000; SameSite=Lax`,
+        `username=${user.username}; Path=/; Max-Age=31536000; SameSite=Lax`,
         `userid=1; Path=/; Max-Age=31536000; SameSite=Lax`
       ]);
       
@@ -56,8 +61,12 @@ export default function handler(req, res) {
 
   if (action === 'signup' && req.method === 'POST') {
     const { username, password } = req.body;
-    
-    if (mockUsers[username]) {
+
+    if (!username || !password) {
+      return res.status(400).json({ success: false, error: 'username and password required' });
+    }
+
+    if (Object.values(mockUsers).find(u => u.username.toLowerCase() === username.toString().toLowerCase())) {
       return res.status(409).json({ success: false, error: 'User already exists' });
     }
     
@@ -74,14 +83,14 @@ export default function handler(req, res) {
       cookies: []
     };
     
-    mockUsers[username] = newUser;
+    mockUsers[username.toLowerCase()] = newUser;
     
     const cookie = generateRoblosecurityCookie();
     newUser.cookies.push(cookie);
     
     res.setHeader('Set-Cookie', [
       `.ROBLOSECURITY=${cookie}; Path=/; Max-Age=31536000; SameSite=Lax`,
-      `username=${username}; Path=/; Max-Age=31536000; SameSite=Lax`,
+      `username=${newUser.username}; Path=/; Max-Age=31536000; SameSite=Lax`,
       `userid=${newUser.id}; Path=/; Max-Age=31536000; SameSite=Lax`
     ]);
     
@@ -99,8 +108,8 @@ export default function handler(req, res) {
       // For mock, always return roblox user
       return res.status(200).json({
         id: 1,
-        name: 'roblox',
-        username: 'roblox',
+        name: 'Roblox',
+        username: 'Roblox',
         isStaff: true,
         isAdmin: true,
         isAuthenticated: true,

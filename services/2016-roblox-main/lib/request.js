@@ -32,6 +32,12 @@ const getMockResponse = (url) => {
       isStaff: true,
       isAdmin: true,
       description: 'System Administrator'
+      ,
+      balance_robux: 100000,
+      balance_tickets: 50000,
+      robux: 100000,
+      tickets: 50000,
+      avatar: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4//8/AwAI/AL+f9zMAAAAAElFTkSuQmCC'
     };
   }
 
@@ -52,6 +58,12 @@ const getMockResponse = (url) => {
       isAdmin: true,
       description: 'System Administrator',
       created: new Date().toISOString()
+      ,
+      balance_robux: 100000,
+      balance_tickets: 50000,
+      robux: 100000,
+      tickets: 50000,
+      avatar: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4//8/AwAI/AL+f9zMAAAAAElFTkSuQmCC'
     };
   }
   
@@ -199,7 +211,7 @@ const getMockResponse = (url) => {
   if (urlStr.includes('/icon') || urlStr.includes('/assets') || urlStr.includes('/thumbnails')) {
     return {
       data: [],
-      url: ''
+      url: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4//8/AwAI/AL+f9zMAAAAAElFTkSuQmCC'
     };
   }
 

@@ -18,6 +18,8 @@ const conf = {
 		alias: {
 			svelte: path.dirname(require.resolve('svelte/package.json'))
 		},
+		// Add conditionNames so Svelte's conditional exports work with Webpack 5
+		conditionNames: ['svelte', 'browser', 'import'],
 		extensions: ['.mjs', '.js', '.ts', '.svelte'],
 		mainFields: ['svelte', 'browser', 'module', 'main']
 	},

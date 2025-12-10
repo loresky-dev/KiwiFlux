@@ -31,6 +31,14 @@ module.exports = {
       },
     ]
   },
+  async rewrites() {
+    return [
+      {
+        source: '/admin-api/:path*',
+        destination: '/api/admin-api/:path*',
+      },
+    ]
+  },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     return config
   },

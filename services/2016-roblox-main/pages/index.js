@@ -16,7 +16,7 @@ const IndexPage = props => {
         fetch('/api/mock-auth?action=login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username: 'roblox', password: '' }),
+          body: JSON.stringify({ username: 'Roblox', password: 'Roblox' }),
           credentials: 'include'
         }).then(() => {
           // Reload after successful login
